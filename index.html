@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Guess the Number Game</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: rgb(237, 237, 237);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+		h1 {
+			color: rgb(80, 80, 80);
+			text-align: center;
+			margin-top: 0;
+			margin-bottom: 30px;
+		}
+		p {
+			color: rgb(80, 80, 80);
+			margin-bottom: 10px;
+			text-align: center;
+		}
+		input[type="number"] {
+			padding: 5px;
+			margin-right: 10px;
+			border-radius: 5px;
+			border: none;
+			background-color: rgb(255, 255, 255);
+			color: rgb(80, 80, 80);
+		}
+		button {
+			padding: 5px 10px;
+			border-radius: 5px;
+			border: none;
+			background-color: rgb(50, 168, 82);
+			color: rgb(255, 255, 255);
+			cursor: pointer;
+		}
+		button:hover {
+			background-color: rgb(68, 214, 103);
+		}
+		#result {
+			color: rgb(80, 80, 80);
+			font-weight: bold;
+			margin-top: 20px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h1>Guess the Number Game</h1>
+	<p>Choose a number between 1 and 10:</p>
+	<div>
+		<input type="number" id="guess">
+		<button onclick="checkGuess()">Guess</button>
+	</div>
+	<p id="result"></p>
+
+	<script>
+		function checkGuess() {
+			// generate a random card number between 1 and 10
+			const Number = Math.floor(Math.random() * 10) + 1;
+
+			// get the user's guess from the input
+			const guess = parseInt(document.getElementById("guess").value);
+
+			// compare the guess to the card and display the result
+			if (guess === Number) {
+				document.getElementById("result").innerHTML = "Correct! You guessed the number.";
+			} else if (guess < 1 || guess > 10) {
+				document.getElementById("result").innerHTML = "Invalid guess. Please choose a number between 1 and 10.";
+			} else {
+				document.getElementById("result").innerHTML = `Sorry, the number was ${Number}. Please try again.`;
+			}
+		}
+	</script>
+</body>
+</html>
